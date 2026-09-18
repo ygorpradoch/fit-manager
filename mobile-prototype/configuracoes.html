@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Configurações - FitManager Mobile</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="device">
+  <div class="screen">
+    <div class="header-bar">
+      <a href="perfil.html" class="back">&larr;</a>
+      <h1>Configurações</h1>
+    </div>
+
+    <div class="screen-content">
+      <div class="card" style="padding:0; overflow:hidden;">
+        <a href="meu-contrato.html" style="display:block; padding:16px; text-decoration:none; color:var(--color-text-primary); border-bottom:1px solid #f1f3f6;">Meu Contrato</a>
+        <a href="#" onclick="openModal('modal-senha'); return false;" style="display:block; padding:16px; text-decoration:none; color:var(--color-text-primary); border-bottom:1px solid #f1f3f6;">Alterar Senha</a>
+        <a href="login.html" style="display:block; padding:16px; text-decoration:none; color:var(--color-error); font-weight:600;">Sair</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-senha">
+  <div class="modal modal-form">
+    <button class="modal-close" onclick="closeModal('modal-senha')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 style="text-align:center;">Alterar Senha</h3>
+    <div class="field"><label>Senha atual</label><input type="password"></div>
+    <div class="field"><label>Nova senha</label><input type="password"></div>
+    <div class="field"><label>Confirmar nova senha</label><input type="password"></div>
+    <button class="btn btn-primary" onclick="alert('Senha alterada com sucesso!'); closeModal('modal-senha')">Alterar Senha</button>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

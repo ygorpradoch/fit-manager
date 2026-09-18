@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Montar Treino - FitManager Mobile</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="device">
+  <div class="screen">
+    <div class="header-bar">
+      <a href="admin-usuarios.html" class="back">&larr;</a>
+      <h1>Montar Treino</h1>
+    </div>
+
+    <div class="screen-content">
+      <p class="text-muted text-sm">Aluno: <strong style="color:var(--color-text-primary)">Matheus Lima</strong> · Matrícula 2024001</p>
+
+      <div class="field"><label>Nome do treino</label><input type="text" placeholder="Ex.: Treino A - Peito/Tríceps"></div>
+
+      <div class="field">
+        <label>Tipo</label>
+        <select><option>Musculação</option><option>Funcional</option><option>Cardio</option></select>
+      </div>
+
+      <div class="field">
+        <label>Dias da semana</label>
+        <select><option>Segunda e Quinta</option><option>Terça e Sexta</option><option>Todos os dias</option></select>
+      </div>
+
+      <div class="section-title">Exercícios</div>
+
+      <div class="card">
+        <div class="field" style="margin-bottom:8px;"><label>Nome do exercício</label><input type="text" value="Supino Reto"></div>
+        <div style="display:flex; gap:8px;">
+          <div class="field" style="flex:1;"><label>Séries</label><input type="number" value="4"></div>
+          <div class="field" style="flex:1;"><label>Repetições</label><input type="number" value="12"></div>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <div class="field" style="flex:1;"><label>Carga</label><input type="text" value="60kg"></div>
+          <div class="field" style="flex:1;"><label>Descanso</label><input type="text" value="60s"></div>
+        </div>
+      </div>
+
+      <button class="btn btn-secondary" style="margin-bottom:16px;">+ Adicionar Exercício</button>
+
+      <div class="btn-row">
+        <a href="admin-usuarios.html" class="btn btn-secondary">Cancelar</a>
+        <a href="admin-usuarios.html" class="btn btn-primary">Salvar</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

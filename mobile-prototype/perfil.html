@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Perfil - FitManager Mobile</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="device">
+  <div class="screen">
+    <div class="header-bar" style="justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div class="avatar" style="background:rgba(255,255,255,.3);"></div>
+        <h1>Carla Luz</h1>
+      </div>
+      <a href="configuracoes.html" style="color:#fff; text-decoration:none; display:flex;" aria-label="Configurações">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </a>
+    </div>
+
+    <div class="screen-content">
+      <div class="card">
+        <h3>Medidas</h3>
+        <div class="row-between"><span class="text-muted">Peso</span><span>62 kg</span></div>
+        <div class="row-between"><span class="text-muted">Altura</span><span>1,65 m</span></div>
+        <div class="row-between"><span class="text-muted">IMC</span><span>22.8</span></div>
+        <div class="row-between"><span class="text-muted">GC</span><span>21%</span></div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="margin:0;">Objetivos</h3>
+          <button class="btn btn-primary btn-sm" style="padding:4px 10px;" onclick="openModal('modal-objetivo')">+</button>
+        </div>
+        <p class="text-sm" style="margin:10px 0 2px;">Peso: 62 / 58 kg</p>
+        <div class="bar"><span style="width:70%"></span></div>
+        <p class="text-sm" style="margin:10px 0 2px;">Leg Press: 120 / 200 kg</p>
+        <div class="bar"><span style="width:60%"></span></div>
+      </div>
+
+      <button class="btn btn-secondary" onclick="openModal('modal-editar-perfil')">Editar Perfil</button>
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="home.html"><span class="icon-dot"></span>Home</a>
+      <a href="treinos.html"><span class="icon-dot"></span>Treinos</a>
+      <a href="aulas.html"><span class="icon-dot"></span>Aulas</a>
+      <a href="notificacoes-todas.html"><span class="icon-dot"></span>Notificações</a>
+      <a href="perfil.html" class="active"><span class="icon-dot"></span>Perfil</a>
+    </nav>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-editar-perfil">
+  <div class="modal modal-form">
+    <button class="modal-close" onclick="closeModal('modal-editar-perfil')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 style="text-align:center;">Editar Perfil</h3>
+    <div class="center" style="margin-bottom:14px;">
+      <div class="avatar" style="background:var(--color-border); margin:0 auto 8px;"></div>
+      <button class="btn btn-secondary btn-sm">Alterar Foto</button>
+    </div>
+    <div class="field"><label>Nome de usuário</label><input type="text" value="Carla Luz"></div>
+    <div class="field"><label>Peso (kg)</label><input type="number" value="62"></div>
+    <div class="field"><label>Altura (m)</label><input type="number" value="1.65" step="0.01"></div>
+    <button class="btn btn-primary" onclick="closeModal('modal-editar-perfil')">Salvar Alterações</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-objetivo">
+  <div class="modal modal-form">
+    <button class="modal-close" onclick="closeModal('modal-objetivo')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 style="text-align:center;">Adicionar Objetivo</h3>
+    <div class="field"><label>Nome do objetivo</label><input type="text" placeholder="Ex.: Supino Reto"></div>
+    <div class="field"><label>Valor atual</label><input type="text" placeholder="Ex.: 40kg"></div>
+    <div class="field"><label>Meta</label><input type="text" placeholder="Ex.: 60kg"></div>
+    <button class="btn btn-primary" onclick="closeModal('modal-objetivo')">Adicionar Objetivo</button>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Gym Bot - FitManager Mobile</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="device">
+  <div class="screen">
+    <div class="header-bar">
+      <a href="javascript:history.back()" class="back">&larr;</a>
+      <h1>Gym Bot</h1>
+    </div>
+
+    <div class="screen-content">
+      <div class="chat-log" id="chat-log">
+        <div class="bubble bubble-bot">Olá, você está falando com o Gym Bot! Como posso te ajudar hoje?</div>
+        <div class="bubble bubble-user">Qual é o meu treino de hoje?</div>
+        <div class="bubble bubble-bot">Hoje você tem treino de perna. Gostaria de mais detalhes?</div>
+      </div>
+    </div>
+
+    <div class="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Digite sua mensagem">
+      <button onclick="sendMessage()"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if (!text) return;
+    const log = document.getElementById('chat-log');
+
+    const userBubble = document.createElement('div');
+    userBubble.className = 'bubble bubble-user';
+    userBubble.textContent = text;
+    log.appendChild(userBubble);
+    input.value = '';
+
+    setTimeout(function () {
+      const botBubble = document.createElement('div');
+      botBubble.className = 'bubble bubble-bot';
+      botBubble.textContent = 'Não entendi sua pergunta. Poderia reformular?';
+      log.appendChild(botBubble);
+      log.scrollTop = log.scrollHeight;
+    }, 500);
+
+    log.scrollTop = log.scrollHeight;
+  }
+  document.getElementById('chat-input').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') sendMessage();
+  });
+</script>
+</body>
+</html>

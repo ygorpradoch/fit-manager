@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Adicionar Aula - FitManager Mobile</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="device">
+  <div class="screen">
+    <div class="header-bar">
+      <a href="admin-aulas.html" class="back">&larr;</a>
+      <h1>Adicionar Aula</h1>
+    </div>
+
+    <div class="screen-content">
+      <div class="field"><label>Nome da Aula</label><input type="text" placeholder="Ex.: Yoga"></div>
+      <div class="field">
+        <label>Instrutor</label>
+        <select><option>Ronnison</option><option>Thiago Narak</option><option>Nascimento</option></select>
+      </div>
+      <div class="field">
+        <label>Dia da Semana</label>
+        <select><option>Segunda</option><option>Terça</option><option>Quarta</option><option>Quinta</option><option>Sexta</option><option>Sábado</option><option>Domingo</option></select>
+      </div>
+      <div class="field">
+        <label>Equipamentos</label>
+        <select><option>Tapetes</option><option>Cordas</option><option>Bicicletas</option><option>Nenhum</option></select>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <div class="field" style="flex:1;"><label>Horário de Início</label><input type="time" value="08:00"></div>
+        <div class="field" style="flex:1;"><label>Horário de Fim</label><input type="time" value="09:00"></div>
+      </div>
+      <div class="field"><label>Vagas</label><input type="number" value="15"></div>
+
+      <div class="btn-row">
+        <a href="admin-aulas.html" class="btn btn-secondary">Cancelar</a>
+        <a href="admin-aulas.html" class="btn btn-primary">Salvar</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

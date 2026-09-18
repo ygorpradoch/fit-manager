@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Gestão de Usuários - FitManager Mobile</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="device">
+  <div class="screen">
+    <div class="header-bar">
+      <a href="admin-home.html" class="back">&larr;</a>
+      <h1>Gestão de Usuários</h1>
+    </div>
+
+    <div class="screen-content">
+      <div class="search-box"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>&nbsp; Buscar usuário por nome ou matrícula</div>
+
+      <div class="list-item">
+        <div class="info">
+          <div class="avatar-sm">ML</div>
+          <div>
+            <div style="font-weight:600; font-size:14px;">Matheus Lima</div>
+            <div class="text-muted text-xs">Matrícula 2024001</div>
+          </div>
+        </div>
+        <div class="dropdown-menu">
+          <button class="menu-btn" onclick="openModal('menu-matheus')"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button>
+        </div>
+      </div>
+
+      <div class="list-item">
+        <div class="info">
+          <div class="avatar-sm">AD</div>
+          <div>
+            <div style="font-weight:600; font-size:14px;">Arthur Dio.</div>
+            <div class="text-muted text-xs">Matrícula 2024002</div>
+          </div>
+        </div>
+        <div class="dropdown-menu">
+          <button class="menu-btn" onclick="openModal('menu-arthur')"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button>
+        </div>
+      </div>
+
+      <div class="list-item">
+        <div class="info">
+          <div class="avatar-sm">PL</div>
+          <div>
+            <div style="font-weight:600; font-size:14px;">Paulo Luan</div>
+            <div class="text-muted text-xs">Matrícula 2024003</div>
+          </div>
+        </div>
+        <div class="dropdown-menu">
+          <button class="menu-btn" onclick="openModal('menu-paulo')"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="admin-home.html"><span class="icon-dot"></span>Home</a>
+      <a href="admin-usuarios.html" class="active"><span class="icon-dot"></span>Usuários</a>
+      <a href="admin-aulas.html"><span class="icon-dot"></span>Aulas</a>
+      <a href="admin-exercicios.html"><span class="icon-dot"></span>Exercícios</a>
+      <a href="admin-aparelhos.html"><span class="icon-dot"></span>Aparelhos</a>
+    </nav>
+  </div>
+</div>
+
+<!-- Menu de ações do usuário (RF14.1) -->
+<div class="modal-overlay" id="menu-matheus">
+  <div class="modal modal-form">
+    <button class="modal-close" onclick="closeModal('menu-matheus')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 style="text-align:center;">Matheus Lima</h3>
+    <a href="admin-montar-treino.html" class="btn btn-secondary" style="margin-bottom:8px;">Montar Treino</a>
+    <button class="btn btn-secondary" style="margin-bottom:8px;" onclick="closeModal('menu-matheus'); openModal('confirmar-desativar')">Desativar Usuário</button>
+    <button class="btn btn-danger" onclick="closeModal('menu-matheus'); openModal('confirmar-excluir')">Excluir Conta</button>
+  </div>
+</div>
+<div class="modal-overlay" id="menu-arthur">
+  <div class="modal modal-form">
+    <button class="modal-close" onclick="closeModal('menu-arthur')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 style="text-align:center;">Arthur Dio.</h3>
+    <a href="admin-montar-treino.html" class="btn btn-secondary" style="margin-bottom:8px;">Montar Treino</a>
+    <button class="btn btn-secondary" style="margin-bottom:8px;" onclick="closeModal('menu-arthur'); openModal('confirmar-desativar')">Desativar Usuário</button>
+    <button class="btn btn-danger" onclick="closeModal('menu-arthur'); openModal('confirmar-excluir')">Excluir Conta</button>
+  </div>
+</div>
+<div class="modal-overlay" id="menu-paulo">
+  <div class="modal modal-form">
+    <button class="modal-close" onclick="closeModal('menu-paulo')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 style="text-align:center;">Paulo Luan</h3>
+    <a href="admin-montar-treino.html" class="btn btn-secondary" style="margin-bottom:8px;">Montar Treino</a>
+    <button class="btn btn-secondary" style="margin-bottom:8px;" onclick="closeModal('menu-paulo'); openModal('confirmar-desativar')">Desativar Usuário</button>
+    <button class="btn btn-danger" onclick="closeModal('menu-paulo'); openModal('confirmar-excluir')">Excluir Conta</button>
+  </div>
+</div>
+
+<!-- Popups de confirmação (RF14.2) -->
+<div class="modal-overlay" id="confirmar-desativar">
+  <div class="modal">
+    <h3>Desativar Usuário?</h3>
+    <p>O usuário perderá o acesso ao aplicativo até ser reativado.</p>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="closeModal('confirmar-desativar')">Cancelar</button>
+      <button class="btn btn-danger" onclick="closeModal('confirmar-desativar')">Confirmar</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="confirmar-excluir">
+  <div class="modal">
+    <h3>Excluir Conta?</h3>
+    <p>Essa ação é permanente e remove todos os dados do usuário.</p>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="closeModal('confirmar-excluir')">Cancelar</button>
+      <button class="btn btn-danger" onclick="closeModal('confirmar-excluir')">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

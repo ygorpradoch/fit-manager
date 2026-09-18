@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Login - FitManager Mobile</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="device">
+  <div class="screen">
+    <div class="screen-content" style="padding-top:64px; align-items:center; display:flex; flex-direction:column; gap:20px;">
+      <div style="width:96px;height:96px;background:var(--color-primary);border-radius:20px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:22px;">FIT</div>
+      <h1 style="margin:0;font-size:22px;">FitManager</h1>
+      <p class="text-muted center" style="margin:0;max-width:260px;">Sistema de Gerenciamento da Academia Unifor</p>
+
+      <form style="width:100%;" onsubmit="event.preventDefault(); window.location.href='home.html';">
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" type="email" placeholder="Digite seu e-mail" required>
+        </div>
+        <div class="field">
+          <label for="senha">Senha</label>
+          <input id="senha" type="password" placeholder="Digite sua senha" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+
+      <a href="recuperar-senha.html" class="link">Esqueceu a senha?</a>
+      <a href="cadastro.html" class="link-muted">Não tem uma conta? Cadastre-se</a>
+
+      <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--color-border); width:100%; text-align:center;">
+        <p class="text-xs text-muted" style="margin:0 0 8px;">Atalho do protótipo: entrar direto como:</p>
+        <div class="btn-row">
+          <a href="home.html" class="btn btn-secondary btn-sm">Aluno</a>
+          <a href="admin-home.html" class="btn btn-secondary btn-sm">Instrutor/Admin</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

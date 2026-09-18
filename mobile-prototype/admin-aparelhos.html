@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Gestão de Aparelhos - FitManager Mobile</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="device">
+  <div class="screen">
+    <div class="header-bar" style="justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <a href="admin-home.html" class="back">&larr;</a>
+        <h1>Aparelhos</h1>
+      </div>
+      <button class="btn btn-secondary btn-sm" style="background:#fff;" onclick="openModal('modal-add-aparelho')">+ Adicionar</button>
+    </div>
+
+    <div class="screen-content">
+      <div class="search-box"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>&nbsp; Buscar aparelho por nome ou tipo</div>
+
+      <div class="list-item">
+        <div class="info"><div><div style="font-weight:600; font-size:14px;">Esteira</div><div class="text-muted text-xs">Cardio</div></div></div>
+        <button class="badge badge-success" style="border:none; cursor:pointer;" onclick="openModal('modal-status-esteira')">Operacional</button>
+      </div>
+      <div class="list-item">
+        <div class="info"><div><div style="font-weight:600; font-size:14px;">Leg Press</div><div class="text-muted text-xs">Musculação</div></div></div>
+        <button class="badge badge-success" style="border:none; cursor:pointer;" onclick="openModal('modal-status-legpress')">Operacional</button>
+      </div>
+      <div class="list-item">
+        <div class="info"><div><div style="font-weight:600; font-size:14px;">Cadeira Extensora</div><div class="text-muted text-xs">Musculação</div></div></div>
+        <button class="badge badge-warning" style="border:none; cursor:pointer;" onclick="openModal('modal-status-cadeira')">Manutenção</button>
+      </div>
+      <div class="list-item">
+        <div class="info"><div><div style="font-weight:600; font-size:14px;">Bicicleta</div><div class="text-muted text-xs">Cardio</div></div></div>
+        <button class="badge badge-success" style="border:none; cursor:pointer;" onclick="openModal('modal-status-bike')">Operacional</button>
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="admin-home.html"><span class="icon-dot"></span>Home</a>
+      <a href="admin-usuarios.html"><span class="icon-dot"></span>Usuários</a>
+      <a href="admin-aulas.html"><span class="icon-dot"></span>Aulas</a>
+      <a href="admin-exercicios.html"><span class="icon-dot"></span>Exercícios</a>
+      <a href="admin-aparelhos.html" class="active"><span class="icon-dot"></span>Aparelhos</a>
+    </nav>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-add-aparelho">
+  <div class="modal modal-form">
+    <button class="modal-close" onclick="closeModal('modal-add-aparelho')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 style="text-align:center;">Adicionar novo aparelho</h3>
+    <div class="field"><label>Nome do aparelho</label><input type="text" placeholder="Digite o nome do aparelho"></div>
+    <div class="field"><label>Tipo</label><select><option>Cardio</option><option>Musculação</option></select></div>
+    <div class="field"><label>Status</label><select><option>Operacional</option><option>Manutenção</option></select></div>
+    <button class="btn btn-primary" onclick="closeModal('modal-add-aparelho')">Adicionar</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-status-esteira">
+  <div class="modal modal-form">
+    <button class="modal-close" onclick="closeModal('modal-status-esteira')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 style="text-align:center;">Alterar status - Esteira</h3>
+    <div class="field"><label>Status</label><select><option>Operacional</option><option>Manutenção</option></select></div>
+    <button class="btn btn-primary" onclick="closeModal('modal-status-esteira')">Salvar</button>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-status-legpress">
+  <div class="modal modal-form">
+    <button class="modal-close" onclick="closeModal('modal-status-legpress')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 style="text-align:center;">Alterar status - Leg Press</h3>
+    <div class="field"><label>Status</label><select><option>Operacional</option><option>Manutenção</option></select></div>
+    <button class="btn btn-primary" onclick="closeModal('modal-status-legpress')">Salvar</button>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-status-cadeira">
+  <div class="modal modal-form">
+    <button class="modal-close" onclick="closeModal('modal-status-cadeira')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 style="text-align:center;">Alterar status - Cadeira Extensora</h3>
+    <div class="field"><label>Status</label><select><option selected>Manutenção</option><option>Operacional</option></select></div>
+    <button class="btn btn-primary" onclick="closeModal('modal-status-cadeira')">Salvar</button>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-status-bike">
+  <div class="modal modal-form">
+    <button class="modal-close" onclick="closeModal('modal-status-bike')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 style="text-align:center;">Alterar status - Bicicleta</h3>
+    <div class="field"><label>Status</label><select><option>Operacional</option><option>Manutenção</option></select></div>
+    <button class="btn btn-primary" onclick="closeModal('modal-status-bike')">Salvar</button>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

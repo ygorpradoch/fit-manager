@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Adicionar Exercício - FitManager Mobile</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="device">
+  <div class="screen">
+    <div class="header-bar">
+      <a href="admin-exercicios.html" class="back">&larr;</a>
+      <h1>Adicionar Exercício</h1>
+    </div>
+
+    <div class="screen-content">
+      <div class="field"><label>Nome do exercício</label><input type="text" placeholder="Digite aqui..."></div>
+
+      <div class="field">
+        <label>Categorias</label>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:13px;">
+          <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" style="width:auto;"> Peito</label>
+          <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" style="width:auto;"> Core</label>
+          <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" style="width:auto;"> Costas</label>
+          <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" style="width:auto;"> Cardio</label>
+          <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" style="width:auto;"> Pernas</label>
+          <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" style="width:auto;"> Corpo inteiro</label>
+          <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" style="width:auto;"> Braços</label>
+          <label style="display:flex; align-items:center; gap:6px; font-weight:400;"><input type="checkbox" style="width:auto;"> Funcional</label>
+        </div>
+      </div>
+
+      <div class="field"><label>Aparelhos</label><select><option>Banco de Supino</option><option>Barra</option><option>Anilhas</option></select></div>
+      <div class="field"><label>Dificuldade</label><select><option>Iniciante</option><option>Intermediário</option><option>Avançado</option></select></div>
+      <div class="field"><label>Instruções</label><textarea placeholder="Descreva como executar o exercício corretamente"></textarea></div>
+      <div class="field"><label>Link do vídeo (opcional)</label><input type="text" placeholder="https://youtube.com/..."></div>
+
+      <div class="btn-row">
+        <a href="admin-exercicios.html" class="btn btn-secondary">Cancelar</a>
+        <a href="admin-exercicios.html" class="btn btn-primary">Salvar</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

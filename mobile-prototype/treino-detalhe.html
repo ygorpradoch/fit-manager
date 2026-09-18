@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Supino Reto - FitManager Mobile</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="device">
+  <div class="screen">
+    <div class="header-bar">
+      <a href="treinos.html" class="back">&larr;</a>
+      <h1 id="titulo-exercicio">Peito</h1>
+    </div>
+
+    <div class="screen-content">
+      <div class="card">
+        <h3>Supino Reto</h3>
+        <p class="text-muted text-sm" style="margin-top:-6px;">Peito · 4 séries · 12 repetições</p>
+
+        <p style="font-weight:600; font-size:14px; margin-bottom:6px;">Equipamentos necessários</p>
+        <p class="text-muted text-sm" style="margin:0;">• Banco de Supino</p>
+        <p class="text-muted text-sm" style="margin:0;">• Barra</p>
+        <p class="text-muted text-sm" style="margin:0 0 14px;">• 2x Anilhas de 10kg</p>
+
+        <button class="btn btn-primary" onclick="openModal('modal-demo')" style="display:flex; align-items:center; justify-content:center; gap:8px;">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+          Ver Demonstração
+        </button>
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="home.html"><span class="icon-dot"></span>Home</a>
+      <a href="treinos.html" class="active"><span class="icon-dot"></span>Treinos</a>
+      <a href="aulas.html"><span class="icon-dot"></span>Aulas</a>
+      <a href="notificacoes-todas.html"><span class="icon-dot"></span>Notificações</a>
+      <a href="perfil.html"><span class="icon-dot"></span>Perfil</a>
+    </nav>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-demo">
+  <div class="modal">
+    <h3>Demonstração em vídeo</h3>
+    <p>Aqui seria exibido o vídeo do YouTube incorporado com a execução correta do exercício.</p>
+    <button class="btn btn-secondary" onclick="closeModal('modal-demo')">Fechar</button>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const ex = params.get('ex');
+  if (ex) {
+    document.querySelector('.card h3').textContent = ex;
+  }
+</script>
+</body>
+</html>

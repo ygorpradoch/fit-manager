@@ -1,0 +1,88 @@
+.modal-criar-aluno {
+     width: 50%;
+     margin:1rem;
+     background-color: white;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     overflow: auto;
+     scrollbar-width: none;
+
+     border-radius: 10px;
+}
+
+.modal-criar-aluno h1,
+h2 {
+     margin: 0;
+}
+
+.modal-header {
+     padding: 1rem;
+     background-color: #962EFF;
+     color: white;
+}
+
+.modal-section {
+     margin: 1rem;
+     border: 2px solid lightgray;
+     border-radius: 20px;
+     padding: 1rem;
+     background-color: whitesmoke;
+}
+
+.contato,
+.dados-institucionais,
+.senha-de-acesso {
+     display: flex;
+     justify-content: space-around;
+}
+
+.dado {
+     flex-direction: column;
+}
+
+.dado input {
+     height: 2rem;
+     border-radius: 10px;
+}
+
+.dado select {
+     height: 2rem;
+     border-radius: 10px;
+}
+
+.confirmarSenhaWarning {
+     color:red;
+}
+
+.informacoes-pessoais {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 1rem;
+}
+
+.informacoes-pessoais .dado:first-child {
+     grid-column: 1 / -1;
+}
+
+.informacoes-pessoais .dado:first-child input {
+     width: 100%;
+}
+
+.botoes-acao {
+     display: flex;
+     justify-content: space-evenly;
+     gap: 0.5rem;
+     padding: 0.5rem;
+}
+
+.botoes-acao button:nth-child(2) {
+     color: white;
+     background-color: #962EFF;
+}
+
+.botoes-acao button {
+     font-weight: bold;
+     width: 100%;
+     border: 2px solid lightgray;
+     border-radius: 5px;
+     padding: 0.5rem;
+}
