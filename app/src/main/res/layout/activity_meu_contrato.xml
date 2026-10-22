@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fm_background"
+    android:orientation="vertical"
+    tools:context=".MeuContratoActivity">
+
+    <LinearLayout
+        android:id="@+id/headerContrato"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fm_blue"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/btnVoltar"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="Voltar"
+            android:src="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Meu Contrato"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plano Mensal Unifor Gym"
+                android:textColor="@color/fm_text"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <LinearLayout style="@style/LinhaMedida">
+                <TextView style="@style/RotuloMedida" android:text="Aluno" />
+                <TextView style="@style/ValorMedida" android:text="Carla Luz" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinhaMedida">
+                <TextView style="@style/RotuloMedida" android:text="Matrícula" />
+                <TextView style="@style/ValorMedida" android:text="2024004" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinhaMedida">
+                <TextView style="@style/RotuloMedida" android:text="Início do contrato" />
+                <TextView style="@style/ValorMedida" android:text="05/03/2026" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinhaMedida">
+                <TextView style="@style/RotuloMedida" android:text="Vigência" />
+                <TextView style="@style/ValorMedida" android:text="12 meses" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinhaMedida">
+                <TextView style="@style/RotuloMedida" android:text="Valor mensal" />
+                <TextView style="@style/ValorMedida" android:text="R$ 89,90" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LinhaMedida"
+                android:gravity="center_vertical">
+                <TextView style="@style/RotuloMedida" android:text="Status" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_badge_ativo"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:text="Ativo"
+                    android:textColor="@color/fm_green"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBaixarPdf"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:text="Baixar PDF"
+        app:backgroundTint="@color/fm_blue"
+        app:cornerRadius="14dp" />
+</LinearLayout>

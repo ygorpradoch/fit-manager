@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="fm_blue">#2563EB</color>
+    <color name="fm_background">#F3F4F6</color>
+    <color name="fm_text">#111827</color>
+    <color name="fm_muted">#6B7280</color>
+    <color name="fm_avatar">#6B93F0</color>
+
+    <color name="fm_red">#DC2626</color>
+    <color name="fm_border">#D1D5DB</color>
+    <color name="fm_divider">#E5E7EB</color>
+
+    <color name="fm_green">#16A34A</color>
+    <color name="fm_green_bg">#DCFCE7</color>
+
+    <color name="fm_text_lida">#9CA3AF</color>
+    <color name="fm_card_lida">#F9FAFB</color>
 </resources>
