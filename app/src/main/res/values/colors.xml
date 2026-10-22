@@ -20,4 +20,7 @@
 
     <color name="fm_text_lida">#9CA3AF</color>
     <color name="fm_card_lida">#F9FAFB</color>
+
+    <color name="fm_bot_fundo">#FCE7F3</color>
+    <color name="fm_bot_texto">#831843</color>
 </resources>

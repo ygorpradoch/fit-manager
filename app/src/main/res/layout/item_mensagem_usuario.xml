@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="end"
+    android:layout_marginStart="60dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/bg_balao_usuario"
+    android:paddingHorizontal="14dp"
+    android:paddingVertical="10dp"
+    android:textColor="@android:color/white"
+    android:textSize="14sp"
+    tools:text="Qual é o meu treino de hoje?" />
