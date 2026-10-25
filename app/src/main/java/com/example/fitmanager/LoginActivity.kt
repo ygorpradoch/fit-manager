@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
         txtErro.visibility = View.GONE
 
         // TODO: validar no backend e mandar pra home do aluno ou do instrutor
-        startActivity(Intent(this, PerfilActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
 

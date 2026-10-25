@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fm_background"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+
+    <!-- Cabeçalho azul: saudação e foto -->
+    <LinearLayout
+        android:id="@+id/headerHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fm_blue"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtSaudacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bem-vindo, Carla"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vamos treinar hoje?"
+                android:textColor="@android:color/white"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:cardBackgroundColor="@color/fm_avatar"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp" />
+    </LinearLayout>
+
+    <!-- Área de conteúdo: o botão flutuante fica por cima da lista -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Card Treino do Dia -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/txtTreinoDia"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Treino do Dia: PERNA"
+                            android:textColor="@color/fm_text"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout style="@style/LinhaExercicio">
+                            <TextView style="@style/NomeExercicio" android:text="Agachamento" />
+                            <TextView style="@style/CargaExercicio" android:text="40kg · 3x" />
+                        </LinearLayout>
+                        <View style="@style/DivisorLinha" />
+
+                        <LinearLayout style="@style/LinhaExercicio">
+                            <TextView style="@style/NomeExercicio" android:text="Leg Press" />
+                            <TextView style="@style/CargaExercicio" android:text="80kg · 3x" />
+                        </LinearLayout>
+                        <View style="@style/DivisorLinha" />
+
+                        <LinearLayout style="@style/LinhaExercicio">
+                            <TextView style="@style/NomeExercicio" android:text="Cadeira Extensora" />
+                            <TextView style="@style/CargaExercicio" android:text="45kg · 3x" />
+                        </LinearLayout>
+                        <View style="@style/DivisorLinha" />
+
+                        <LinearLayout style="@style/LinhaExercicio">
+                            <TextView style="@style/NomeExercicio" android:text="Stiff" />
+                            <TextView style="@style/CargaExercicio" android:text="30kg · 3x" />
+                        </LinearLayout>
+                        <View style="@style/DivisorLinha" />
+
+                        <LinearLayout style="@style/LinhaExercicio">
+                            <TextView style="@style/NomeExercicio" android:text="Mesa Flexora" />
+                            <TextView style="@style/CargaExercicio" android:text="50kg · 3x" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Próximos Treinos -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Próximos Treinos"
+                    android:textColor="@color/fm_text"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Peito"
+                                android:textColor="@color/fm_text"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnVerPeito"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Ver"
+                                app:backgroundTint="@color/fm_blue"
+                                app:cornerRadius="14dp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Costas"
+                                android:textColor="@color/fm_text"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnVerCostas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Ver"
+                                app:backgroundTint="@color/fm_blue"
+                                app:cornerRadius="14dp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Botão flutuante do Gym Bot -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabGymBot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            android:contentDescription="Abrir Gym Bot"
+            app:backgroundTint="@color/fm_blue"
+            app:shapeAppearanceOverlay="@style/FabCircular"
+            app:srcCompat="@drawable/ic_chat"
+            app:tint="@android:color/white" />
+    </FrameLayout>
+
+    <!-- Barra de navegação inferior fixa -->
+    <include
+        android:id="@+id/bottomNav"
+        layout="@layout/layout_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

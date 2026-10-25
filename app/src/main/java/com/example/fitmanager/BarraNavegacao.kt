@@ -45,8 +45,8 @@ object BarraNavegacao {
         val tela: Class<out Activity>? = when (destino) {
             ItemNav.NOTIFICACOES -> NotificacoesActivity::class.java
             ItemNav.PERFIL -> PerfilActivity::class.java
-            ItemNav.HOME -> null     // TODO: HomeActivity::class.java
-            ItemNav.TREINOS -> null  // TODO: TreinosActivity::class.java
+            ItemNav.HOME -> HomeActivity::class.java
+            ItemNav.TREINOS -> TreinosActivity::class.java
             ItemNav.AULAS -> null    // TODO: AulasActivity::class.java
         }
 
