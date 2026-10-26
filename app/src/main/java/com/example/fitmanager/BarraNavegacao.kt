@@ -47,7 +47,7 @@ object BarraNavegacao {
             ItemNav.PERFIL -> PerfilActivity::class.java
             ItemNav.HOME -> HomeActivity::class.java
             ItemNav.TREINOS -> TreinosActivity::class.java
-            ItemNav.AULAS -> null    // TODO: AulasActivity::class.java
+            ItemNav.AULAS -> AulasActivity::class.java
         }
 
         if (tela == null) {

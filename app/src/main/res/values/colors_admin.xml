@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fm_warning">#D97706</color>
+    <color name="fm_warning_bg">#FEF3C7</color>
+    <color name="fm_barra_trilho">#E5E7EB</color>
+</resources>

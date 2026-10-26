@@ -51,7 +51,13 @@ class LoginActivity : AppCompatActivity() {
         txtErro.visibility = View.GONE
 
         // TODO: validar no backend e mandar pra home do aluno ou do instrutor
-        startActivity(Intent(this, HomeActivity::class.java))
+        // Enquanto não há backend, e-mail que começa com "admin" entra como instrutor/admin
+        val destino = if (email.startsWith("admin", ignoreCase = true)) {
+            AdminHomeActivity::class.java
+        } else {
+            HomeActivity::class.java
+        }
+        startActivity(Intent(this, destino))
         finish()
     }
 
