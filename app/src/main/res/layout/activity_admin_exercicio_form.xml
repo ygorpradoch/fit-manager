@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fm_background"
+    android:orientation="vertical"
+    tools:context=".AdminExercicioFormActivity">
+
+    <LinearLayout
+        android:id="@+id/headerForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fm_blue"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/btnVoltar"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="Voltar"
+            android:src="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:id="@+id/txtTituloForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Adicionar Exercício"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="24dp">
+
+            <TextView style="@style/RotuloCampo" android:text="Nome do exercício" />
+            <EditText
+                android:id="@+id/edtNomeExercicio"
+                style="@style/CampoEntrada"
+                android:autofillHints="none"
+                android:hint="Digite aqui..."
+                android:inputType="textCapSentences" />
+
+            <TextView style="@style/RotuloCampo" android:text="Categorias" />
+
+            <!-- duas colunas de checkbox -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/chkPeito"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Peito"
+                        android:textColor="@color/fm_text" />
+
+                    <CheckBox
+                        android:id="@+id/chkCostas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Costas"
+                        android:textColor="@color/fm_text" />
+
+                    <CheckBox
+                        android:id="@+id/chkPernas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pernas"
+                        android:textColor="@color/fm_text" />
+
+                    <CheckBox
+                        android:id="@+id/chkBracos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Braços"
+                        android:textColor="@color/fm_text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/chkCore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Core"
+                        android:textColor="@color/fm_text" />
+
+                    <CheckBox
+                        android:id="@+id/chkCardio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cardio"
+                        android:textColor="@color/fm_text" />
+
+                    <CheckBox
+                        android:id="@+id/chkCorpoInteiro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Corpo inteiro"
+                        android:textColor="@color/fm_text" />
+
+                    <CheckBox
+                        android:id="@+id/chkFuncional"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Funcional"
+                        android:textColor="@color/fm_text" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView style="@style/RotuloCampo" android:text="Aparelhos" />
+            <Spinner
+                android:id="@+id/spnAparelho"
+                style="@style/CampoSpinner"
+                android:entries="@array/aparelhos_exercicio" />
+
+            <TextView style="@style/RotuloCampo" android:text="Dificuldade" />
+            <Spinner
+                android:id="@+id/spnDificuldade"
+                style="@style/CampoSpinner"
+                android:entries="@array/dificuldades" />
+
+            <TextView style="@style/RotuloCampo" android:text="Instruções" />
+            <EditText
+                android:id="@+id/edtInstrucoes"
+                style="@style/CampoEntrada"
+                android:layout_height="wrap_content"
+                android:autofillHints="none"
+                android:gravity="top"
+                android:hint="Descreva como executar o exercício corretamente"
+                android:inputType="textMultiLine|textCapSentences"
+                android:minLines="4"
+                android:paddingVertical="12dp" />
+
+            <TextView style="@style/RotuloCampo" android:text="Link do vídeo (opcional)" />
+            <EditText
+                android:id="@+id/edtVideo"
+                style="@style/CampoEntrada"
+                android:autofillHints="none"
+                android:hint="https://youtube.com/..."
+                android:inputType="textUri" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCancelar"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:text="Cancelar"
+                    android:textColor="@color/fm_blue"
+                    app:cornerRadius="14dp"
+                    app:strokeColor="@color/fm_blue" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSalvar"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:text="Salvar"
+                    app:backgroundTint="@color/fm_blue"
+                    app:cornerRadius="14dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

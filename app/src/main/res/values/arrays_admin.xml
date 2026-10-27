@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="aparelhos_exercicio">
+        <item>Banco de Supino</item>
+        <item>Barra</item>
+        <item>Anilhas</item>
+        <item>Halteres</item>
+        <item>Leg Press</item>
+        <item>Nenhum</item>
+    </string-array>
+    <string-array name="dificuldades">
+        <item>Iniciante</item>
+        <item>Intermediário</item>
+        <item>Avançado</item>
+    </string-array>
+    <string-array name="tipos_aparelho">
+        <item>Cardio</item>
+        <item>Musculação</item>
+    </string-array>
+    <string-array name="status_aparelho">
+        <item>Operacional</item>
+        <item>Manutenção</item>
+    </string-array>
+</resources>

@@ -45,8 +45,8 @@ object BarraNavegacaoAdmin {
             ItemNavAdmin.HOME -> AdminHomeActivity::class.java
             ItemNavAdmin.USUARIOS -> GestaoUsuariosActivity::class.java
             ItemNavAdmin.AULAS -> AdminAulasActivity::class.java
-            ItemNavAdmin.EXERCICIOS -> null   // TODO: tela de exercícios do admin
-            ItemNavAdmin.APARELHOS -> null    // TODO: tela de aparelhos do admin
+            ItemNavAdmin.EXERCICIOS -> AdminExerciciosActivity::class.java
+            ItemNavAdmin.APARELHOS -> AdminAparelhosActivity::class.java
         }
 
         if (tela == null) {

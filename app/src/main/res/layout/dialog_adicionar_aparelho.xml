@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Adicionar novo aparelho"
+                android:textColor="@color/fm_text"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnFechar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="×"
+                android:textColor="@color/fm_muted"
+                android:textSize="26sp" />
+        </FrameLayout>
+
+        <TextView style="@style/RotuloCampo" android:text="Nome do aparelho" />
+        <EditText
+            android:id="@+id/edtNomeAparelho"
+            style="@style/CampoEntrada"
+            android:autofillHints="none"
+            android:hint="Digite o nome do aparelho"
+            android:inputType="textCapSentences" />
+
+        <TextView style="@style/RotuloCampo" android:text="Tipo" />
+        <Spinner
+            android:id="@+id/spnTipo"
+            style="@style/CampoSpinner"
+            android:entries="@array/tipos_aparelho" />
+
+        <TextView style="@style/RotuloCampo" android:text="Status" />
+        <Spinner
+            android:id="@+id/spnStatus"
+            style="@style/CampoSpinner"
+            android:entries="@array/status_aparelho" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAdicionarAparelho"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="24dp"
+            android:text="Adicionar"
+            app:backgroundTint="@color/fm_blue"
+            app:cornerRadius="14dp" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

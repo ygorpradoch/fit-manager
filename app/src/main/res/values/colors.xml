@@ -23,4 +23,7 @@
 
     <color name="fm_bot_fundo">#FCE7F3</color>
     <color name="fm_bot_texto">#831843</color>
+
+    <color name="fm_yellow">#D97706</color>
+    <color name="fm_yellow_bg">#FEF3C7</color>
 </resources>
