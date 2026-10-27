@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitManager">
         <activity
-            android:name=".MainActivity"
+            android:name=".AdminAulaDetalheActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
@@ -63,6 +63,18 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".DetalheExercicioActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".AdminAulasActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".AdminAulaFormActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".AdminAulaDetalheActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>

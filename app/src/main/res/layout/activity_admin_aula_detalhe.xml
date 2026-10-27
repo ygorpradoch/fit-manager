@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fm_background"
+    android:orientation="vertical"
+    tools:context=".`activity_admin_aula_detalhe.kt`">
+
+    <LinearLayout
+        android:id="@+id/headerDetalhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fm_blue"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/btnVoltar"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="Voltar"
+            android:src="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:id="@+id/txtTituloDetalhe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Yoga"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Card Instrutor -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Instrutor"
+                        android:textColor="@color/fm_text"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtInicialInstrutor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:text="RR"
+                            android:textColor="@color/fm_muted"
+                            android:textSize="16sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txtNomeInstrutor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ronnison"
+                                android:textColor="@color/fm_text"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txtMatriculaInstrutor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Matrícula 205304"
+                                android:textColor="@color/fm_muted"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card Informações Gerais -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Informações Gerais"
+                        android:textColor="@color/fm_text"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout style="@style/LinhaExercicio">
+                        <TextView style="@style/RotuloMedida" android:text="Dia da semana" />
+                        <TextView android:id="@+id/txtDia" style="@style/ValorMedida" android:text="Segunda" />
+                    </LinearLayout>
+                    <View style="@style/DivisorLinha" />
+
+                    <LinearLayout style="@style/LinhaExercicio">
+                        <TextView style="@style/RotuloMedida" android:text="Horário" />
+                        <TextView android:id="@+id/txtHorario" style="@style/ValorMedida" android:text="08:00 - 09:00" />
+                    </LinearLayout>
+                    <View style="@style/DivisorLinha" />
+
+                    <LinearLayout style="@style/LinhaExercicio">
+                        <TextView style="@style/RotuloMedida" android:text="Alunos matriculados" />
+                        <TextView android:id="@+id/txtAlunos" style="@style/ValorMedida" android:text="12/15" />
+                    </LinearLayout>
+                    <View style="@style/DivisorLinha" />
+
+                    <LinearLayout style="@style/LinhaExercicio">
+                        <TextView style="@style/RotuloMedida" android:text="Duração" />
+                        <TextView android:id="@+id/txtDuracao" style="@style/ValorMedida" android:text="60 min" />
+                    </LinearLayout>
+                    <View style="@style/DivisorLinha" />
+
+                    <LinearLayout style="@style/LinhaExercicio">
+                        <TextView style="@style/RotuloMedida" android:text="Equipamentos" />
+                        <TextView android:id="@+id/txtEquipamentos" style="@style/ValorMedida" android:text="Tapetes" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card Próximas datas -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Próximas datas"
+                        android:textColor="@color/fm_text"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout style="@style/LinhaExercicio">
+                        <TextView android:id="@+id/txtData1" style="@style/NomeExercicio" android:text="24 de mar." />
+                        <TextView android:id="@+id/txtHora1" style="@style/CargaExercicio" android:text="08:00" />
+                    </LinearLayout>
+                    <View style="@style/DivisorLinha" />
+
+                    <LinearLayout style="@style/LinhaExercicio">
+                        <TextView android:id="@+id/txtData2" style="@style/NomeExercicio" android:text="31 de mar." />
+                        <TextView android:id="@+id/txtHora2" style="@style/CargaExercicio" android:text="08:00" />
+                    </LinearLayout>
+                    <View style="@style/DivisorLinha" />
+
+                    <LinearLayout style="@style/LinhaExercicio">
+                        <TextView android:id="@+id/txtData3" style="@style/NomeExercicio" android:text="07 de abr." />
+                        <TextView android:id="@+id/txtHora3" style="@style/CargaExercicio" android:text="08:00" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/bottomNavAdmin"
+        layout="@layout/layout_bottom_nav_admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

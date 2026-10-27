@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/fm_divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="8dp">
+
+        <LinearLayout android:id="@+id/navAdminHome" style="@style/NavAba">
+            <View style="@style/NavIcone" />
+            <TextView style="@style/NavRotulo" android:text="Home" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/navAdminUsuarios" style="@style/NavAba">
+            <View style="@style/NavIcone" />
+            <TextView style="@style/NavRotulo" android:text="Usuários" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/navAdminAulas" style="@style/NavAba">
+            <View style="@style/NavIcone" />
+            <TextView style="@style/NavRotulo" android:text="Aulas" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/navAdminExercicios" style="@style/NavAba">
+            <View style="@style/NavIcone" />
+            <TextView style="@style/NavRotulo" android:text="Exercícios" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/navAdminAparelhos" style="@style/NavAba">
+            <View style="@style/NavIcone" />
+            <TextView style="@style/NavRotulo" android:text="Aparelhos" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
