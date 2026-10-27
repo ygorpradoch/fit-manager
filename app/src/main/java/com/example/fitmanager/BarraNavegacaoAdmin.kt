@@ -10,8 +10,8 @@ import androidx.core.content.ContextCompat
 
 enum class ItemNavAdmin { HOME, USUARIOS, AULAS, EXERCICIOS, APARELHOS }
 
+// Barra inferior do administrador (funciona igual à BarraNavegacao do aluno)
 object BarraNavegacaoAdmin {
-
 
     fun configurar(activity: Activity, ativo: ItemNavAdmin) {
         val abas = mapOf(
@@ -40,14 +40,13 @@ object BarraNavegacaoAdmin {
         }
     }
 
-
     private fun navegar(activity: Activity, destino: ItemNavAdmin) {
         val tela: Class<out Activity>? = when (destino) {
+            ItemNavAdmin.HOME -> AdminHomeActivity::class.java
+            ItemNavAdmin.USUARIOS -> GestaoUsuariosActivity::class.java
             ItemNavAdmin.AULAS -> AdminAulasActivity::class.java
-            ItemNavAdmin.HOME -> null        // TODO: AdminHomeActivity::class.java
-            ItemNavAdmin.USUARIOS -> null    // TODO: AdminUsuariosActivity::class.java
-            ItemNavAdmin.EXERCICIOS -> null  // TODO: AdminExerciciosActivity::class.java
-            ItemNavAdmin.APARELHOS -> null   // TODO: AdminAparelhosActivity::class.java
+            ItemNavAdmin.EXERCICIOS -> null   // TODO: tela de exercícios do admin
+            ItemNavAdmin.APARELHOS -> null    // TODO: tela de aparelhos do admin
         }
 
         if (tela == null) {

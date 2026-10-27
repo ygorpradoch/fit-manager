@@ -16,29 +16,119 @@
         android:orientation="horizontal"
         android:paddingVertical="8dp">
 
-        <LinearLayout android:id="@+id/navAdminHome" style="@style/NavAba">
-            <View style="@style/NavIcone" />
-            <TextView style="@style/NavRotulo" android:text="Home" />
+        <LinearLayout
+            android:id="@+id/navAdminHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/bg_nav_icone" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:maxLines="1"
+                android:text="Home"
+                android:textSize="10sp" />
         </LinearLayout>
 
-        <LinearLayout android:id="@+id/navAdminUsuarios" style="@style/NavAba">
-            <View style="@style/NavIcone" />
-            <TextView style="@style/NavRotulo" android:text="Usuários" />
+        <LinearLayout
+            android:id="@+id/navAdminUsuarios"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/bg_nav_icone" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:maxLines="1"
+                android:text="Usuários"
+                android:textSize="10sp" />
         </LinearLayout>
 
-        <LinearLayout android:id="@+id/navAdminAulas" style="@style/NavAba">
-            <View style="@style/NavIcone" />
-            <TextView style="@style/NavRotulo" android:text="Aulas" />
+        <LinearLayout
+            android:id="@+id/navAdminAulas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/bg_nav_icone" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:maxLines="1"
+                android:text="Aulas"
+                android:textSize="10sp" />
         </LinearLayout>
 
-        <LinearLayout android:id="@+id/navAdminExercicios" style="@style/NavAba">
-            <View style="@style/NavIcone" />
-            <TextView style="@style/NavRotulo" android:text="Exercícios" />
+        <LinearLayout
+            android:id="@+id/navAdminExercicios"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/bg_nav_icone" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:maxLines="1"
+                android:text="Exercícios"
+                android:textSize="10sp" />
         </LinearLayout>
 
-        <LinearLayout android:id="@+id/navAdminAparelhos" style="@style/NavAba">
-            <View style="@style/NavIcone" />
-            <TextView style="@style/NavRotulo" android:text="Aparelhos" />
+        <LinearLayout
+            android:id="@+id/navAdminAparelhos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/bg_nav_icone" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:maxLines="1"
+                android:text="Aparelhos"
+                android:textSize="10sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

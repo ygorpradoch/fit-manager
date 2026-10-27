@@ -38,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
     private fun entrar() {
         val email = edtEmail.text.toString().trim()
         val senha = edtSenha.text.toString()
@@ -49,17 +50,10 @@ class LoginActivity : AppCompatActivity() {
 
         txtErro.visibility = View.GONE
 
-
-        // TODO: validar no backend e identificar o perfil de verdade
-        val ehAdmin = email.startsWith("admin", ignoreCase = true) ||
-                email.startsWith("instrutor", ignoreCase = true)
-
-        val destino = if (ehAdmin) {
-            AdminAulasActivity::class.java   // TODO: trocar por AdminHomeActivity quando existir
-        } else {
-            HomeActivity::class.java
-        }
-
+        // TODO: validar no backend e mandar pra home do aluno ou do instrutor
+        // TEMPORÁRIO (só para testar): e-mail que começa com "admin" abre o painel do administrador
+        val ehAdmin = email.lowercase().startsWith("admin")
+        val destino = if (ehAdmin) AdminHomeActivity::class.java else HomeActivity::class.java
         startActivity(Intent(this, destino))
         finish()
     }
