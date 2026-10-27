@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fm_background"
+    android:orientation="vertical"
+    tools:context=".AdminAulaFormActivity">
+
+    <LinearLayout
+        android:id="@+id/headerForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fm_blue"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/btnVoltar"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="Voltar"
+            android:src="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:id="@+id/txtTituloForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Adicionar Aula"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="24dp">
+
+            <TextView style="@style/RotuloCampo" android:text="Nome da Aula" />
+            <EditText
+                android:id="@+id/edtNomeAula"
+                style="@style/CampoEntrada"
+                android:autofillHints="none"
+                android:hint="Ex.: Yoga"
+                android:inputType="textCapSentences" />
+
+            <TextView style="@style/RotuloCampo" android:text="Instrutor" />
+            <Spinner
+                android:id="@+id/spnInstrutor"
+                style="@style/CampoSpinner"
+                android:entries="@array/instrutores" />
+
+            <TextView style="@style/RotuloCampo" android:text="Dia da Semana" />
+            <Spinner
+                android:id="@+id/spnDia"
+                style="@style/CampoSpinner"
+                android:entries="@array/dias_semana" />
+
+            <TextView style="@style/RotuloCampo" android:text="Equipamentos" />
+            <Spinner
+                android:id="@+id/spnEquipamento"
+                style="@style/CampoSpinner"
+                android:entries="@array/equipamentos_aula" />
+
+            <!-- Horários lado a lado -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView style="@style/RotuloCampo" android:text="Horário de Início" />
+                    <TextView
+                        android:id="@+id/txtInicio"
+                        style="@style/CampoEntrada"
+                        android:clickable="true"
+                        android:drawableEnd="@drawable/ic_clock"
+                        android:focusable="true"
+                        android:text="08:00" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView style="@style/RotuloCampo" android:text="Horário de Fim" />
+                    <TextView
+                        android:id="@+id/txtFim"
+                        style="@style/CampoEntrada"
+                        android:clickable="true"
+                        android:drawableEnd="@drawable/ic_clock"
+                        android:focusable="true"
+                        android:text="09:00" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView style="@style/RotuloCampo" android:text="Vagas" />
+            <EditText
+                android:id="@+id/edtVagas"
+                style="@style/CampoEntrada"
+                android:autofillHints="none"
+                android:inputType="number"
+                android:text="15" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCancelar"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:text="Cancelar"
+                    android:textColor="@color/fm_blue"
+                    app:cornerRadius="14dp"
+                    app:strokeColor="@color/fm_blue" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSalvar"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:text="Salvar"
+                    app:backgroundTint="@color/fm_blue"
+                    app:cornerRadius="14dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
