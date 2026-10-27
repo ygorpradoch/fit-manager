@@ -43,15 +43,23 @@ class LoginActivity : AppCompatActivity() {
         val email = edtEmail.text.toString().trim()
         val senha = edtSenha.text.toString()
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() || senha.isEmpty()) {
-            txtErro.visibility = View.VISIBLE
+        txtErro.visibility = View.GONE
+        
+        if (email.isEmpty()) {
+            edtEmail.error = "Preencha este campo"
+            edtEmail.requestFocus()
+            return
+        }
+        if (senha.isEmpty()) {
+            edtSenha.error = "Preencha este campo"
+            edtSenha.requestFocus()
             return
         }
 
-        txtErro.visibility = View.GONE
-
-        // TODO: validar no backend e mandar pra home do aluno ou do instrutor
-        // TEMPORÁRIO (só para testar): e-mail que começa com "admin" abre o painel do administrador
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            txtErro.visibility = View.VISIBLE
+            return
+        }
         val ehAdmin = email.lowercase().startsWith("admin")
         val destino = if (ehAdmin) AdminHomeActivity::class.java else HomeActivity::class.java
         startActivity(Intent(this, destino))
