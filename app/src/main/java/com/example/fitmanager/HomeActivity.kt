@@ -3,7 +3,6 @@ package com.example.fitmanager
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,21 +17,19 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         ajustarBarras()
 
-        // Botão flutuante: abre a tela do Gym Bot (feita pelo Ygor)
         findViewById<View>(R.id.fabGymBot).setOnClickListener {
             startActivity(Intent(this, ChatActivity::class.java))
         }
 
-
+        findViewById<View>(R.id.btnVerPeito).setOnClickListener { abrirTreinos() }
+        findViewById<View>(R.id.btnVerCostas).setOnClickListener { abrirTreinos() }
 
         BarraNavegacao.configurar(this, ItemNav.HOME)
     }
 
-    private fun avisarEmDesenvolvimento() {
-        Toast.makeText(this, "Tela em desenvolvimento", Toast.LENGTH_SHORT).show()
+    private fun abrirTreinos() {
+        startActivity(Intent(this, TreinosActivity::class.java))
     }
-
-    // Cabeçalho ocupa a barra de status e a barra inferior respeita a navegação do sistema
     private fun ajustarBarras() {
         val header = findViewById<View>(R.id.headerHome)
         val bottomNav = findViewById<View>(R.id.bottomNav)

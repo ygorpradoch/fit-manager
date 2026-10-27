@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
         val senha = edtSenha.text.toString()
 
         txtErro.visibility = View.GONE
-        
+
         if (email.isEmpty()) {
             edtEmail.error = "Preencha este campo"
             edtEmail.requestFocus()
