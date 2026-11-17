@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "6452739804",
+    "project_id": "fit-manager-1f8ed",
+    "storage_bucket": "fit-manager-1f8ed.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6452739804:android:b20cc9d8795ecd6c03be19",
+        "android_client_info": {
+          "package_name": "com.example.fitmanager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpyj2iOFVbYNiM-x5ZryiVimqxCDIhW44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -18,7 +18,6 @@ import androidx.core.view.updatePadding
 
 class MontarTreinoActivity : AppCompatActivity() {
 
-    // Nomes das informações enviadas pela tela de Gestão de Usuários
     companion object {
         const val EXTRA_NOME_ALUNO = "nome_aluno"
         const val EXTRA_MATRICULA = "matricula"
@@ -41,7 +40,6 @@ class MontarTreinoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_montar_treino)
         ajustarBarras()
 
-        // Valores de exemplo caso a tela seja aberta direto, sem passar pela lista de usuários
         val nomeAluno = intent.getStringExtra(EXTRA_NOME_ALUNO) ?: "Matheus Lima"
         val matricula = intent.getStringExtra(EXTRA_MATRICULA) ?: "2024001"
 
@@ -73,7 +71,6 @@ class MontarTreinoActivity : AppCompatActivity() {
         spinner.adapter = adapter
     }
 
-    // Adiciona um bloco de exercício vazio ao formulário
     private fun adicionarExercicio() {
         val item = layoutInflater.inflate(R.layout.item_exercicio_form, containerExercicios, false)
         containerExercicios.addView(item)
