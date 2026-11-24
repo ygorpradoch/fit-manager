@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class RecuperarSenhaActivity : AppCompatActivity() {
 
@@ -34,18 +35,25 @@ class RecuperarSenhaActivity : AppCompatActivity() {
         val email = edtEmail.text.toString().trim()
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            txtErro.text = "Digite um e-mail válido"
             txtErro.visibility = View.VISIBLE
             return
         }
 
         txtErro.visibility = View.GONE
 
-        // TODO: conferir no backend se o e-mail existe antes de mandar o link
-        AlertDialog.Builder(this)
-            .setMessage("Link de recuperação enviado para $email")
-            .setCancelable(false)
-            .setPositiveButton("OK") { _, _ -> finish() }
-            .show()
+        FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+            .addOnSuccessListener {
+                AlertDialog.Builder(this)
+                    .setMessage("Se o e-mail estiver cadastrado, você receberá o link de recuperação")
+                    .setCancelable(false)
+                    .setPositiveButton("OK") { _, _ -> finish() }
+                    .show()
+            }
+            .addOnFailureListener {
+                txtErro.text = "Não foi possível enviar o link. Tente novamente"
+                txtErro.visibility = View.VISIBLE
+            }
     }
 
     private fun ajustarBarraDeStatus() {

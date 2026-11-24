@@ -10,16 +10,18 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
-import android.util.Log
-import com.google.firebase.Firebase
-import com.google.firebase.firestore.firestore
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginActivity : AppCompatActivity() {
+
+    private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
     private lateinit var edtEmail: EditText
     private lateinit var edtSenha: EditText
     private lateinit var txtErro: TextView
+    private lateinit var btnEntrar: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +32,9 @@ class LoginActivity : AppCompatActivity() {
         edtEmail = findViewById(R.id.edtEmail)
         edtSenha = findViewById(R.id.edtSenha)
         txtErro = findViewById(R.id.txtErro)
+        btnEntrar = findViewById(R.id.btnEntrar)
 
-        findViewById<View>(R.id.btnEntrar).setOnClickListener { entrar() }
+        btnEntrar.setOnClickListener { entrar() }
 
         findViewById<View>(R.id.txtEsqueciSenha).setOnClickListener {
             startActivity(Intent(this, RecuperarSenhaActivity::class.java))
@@ -66,10 +69,32 @@ class LoginActivity : AppCompatActivity() {
             txtErro.visibility = View.VISIBLE
             return
         }
-        val ehAdmin = email.lowercase().startsWith("admin")
-        val destino = if (ehAdmin) AdminHomeActivity::class.java else HomeActivity::class.java
-        startActivity(Intent(this, destino))
-        finish()
+
+        btnEntrar.isEnabled = false
+
+        auth.signInWithEmailAndPassword(email, senha)
+            .addOnSuccessListener { resultado ->
+                abrirTelaInicial(resultado.user!!.uid)
+            }
+            .addOnFailureListener {
+                btnEntrar.isEnabled = true
+                txtErro.visibility = View.VISIBLE
+            }
+    }
+
+    // busca o tipo do usuario no Firestore para saber se vai para a home do aluno ou do admin
+    private fun abrirTelaInicial(uid: String) {
+        db.collection("usuarios").document(uid).get()
+            .addOnSuccessListener { doc ->
+                val tipo = doc.getString("tipo")
+                val destino = if (tipo == "admin") AdminHomeActivity::class.java else HomeActivity::class.java
+                startActivity(Intent(this, destino))
+                finish()
+            }
+            .addOnFailureListener {
+                btnEntrar.isEnabled = true
+                txtErro.visibility = View.VISIBLE
+            }
     }
 
     private fun ajustarBarraDeStatus() {

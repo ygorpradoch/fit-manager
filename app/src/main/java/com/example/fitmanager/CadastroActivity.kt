@@ -10,12 +10,16 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.firestore.FirebaseFirestore
 
 class CadastroActivity : AppCompatActivity() {
 
-    // enquanto nao tem backend, usa essa lista pra testar o e-mail repetido
-    private val emailsCadastrados = listOf("carla@unifor.br", "marcelo@unifor.br")
+    private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
+    private lateinit var btnCadastrar: View
     private lateinit var edtNome: EditText
     private lateinit var edtEmail: EditText
     private lateinit var edtSenha: EditText
@@ -36,7 +40,8 @@ class CadastroActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.btnVoltar).setOnClickListener { finish() }
         findViewById<View>(R.id.txtLogin).setOnClickListener { finish() }
-        findViewById<View>(R.id.btnCadastrar).setOnClickListener { cadastrar() }
+        btnCadastrar = findViewById(R.id.btnCadastrar)
+        btnCadastrar.setOnClickListener { cadastrar() }
     }
 
 
@@ -49,7 +54,6 @@ class CadastroActivity : AppCompatActivity() {
         val erro = when {
             nome.isEmpty() || email.isEmpty() || senha.isEmpty() -> "Preencha todos os campos"
             !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> "Digite um e-mail válido"
-            emailsCadastrados.contains(email.lowercase()) -> "Este e-mail já está cadastrado"
             !senhaValida(senha) -> "A senha precisa ter no mínimo 8 caracteres, um número e uma letra maiúscula"
             senha != confirmarSenha -> "As senhas não coincidem"
             else -> null
@@ -62,12 +66,45 @@ class CadastroActivity : AppCompatActivity() {
         }
 
         txtErro.visibility = View.GONE
+        btnCadastrar.isEnabled = false
 
-        AlertDialog.Builder(this)
-            .setMessage("Cadastro realizado com sucesso!")
-            .setCancelable(false)
-            .setPositiveButton("OK") { _, _ -> finish() }
-            .show()
+        auth.createUserWithEmailAndPassword(email, senha)
+            .addOnSuccessListener { resultado ->
+                salvarUsuario(resultado.user!!.uid, nome, email)
+            }
+            .addOnFailureListener { e ->
+                btnCadastrar.isEnabled = true
+                txtErro.text = if (e is FirebaseAuthUserCollisionException) {
+                    "Este e-mail já está cadastrado"
+                } else {
+                    "Não foi possível cadastrar. Tente novamente"
+                }
+                txtErro.visibility = View.VISIBLE
+            }
+    }
+
+    // o Auth guarda so e-mail e senha, entao nome e tipo ficam num documento em "usuarios"
+    private fun salvarUsuario(uid: String, nome: String, email: String) {
+        val usuario = hashMapOf(
+            "nome" to nome,
+            "email" to email,
+            "tipo" to "aluno"
+        )
+
+        db.collection("usuarios").document(uid).set(usuario)
+            .addOnSuccessListener {
+                auth.signOut()
+                AlertDialog.Builder(this)
+                    .setMessage("Cadastro realizado com sucesso!")
+                    .setCancelable(false)
+                    .setPositiveButton("OK") { _, _ -> finish() }
+                    .show()
+            }
+            .addOnFailureListener {
+                btnCadastrar.isEnabled = true
+                txtErro.text = "Não foi possível salvar seus dados. Tente novamente"
+                txtErro.visibility = View.VISIBLE
+            }
     }
 
     private fun senhaValida(senha: String): Boolean {
