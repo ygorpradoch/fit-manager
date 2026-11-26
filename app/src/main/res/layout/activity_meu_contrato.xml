@@ -50,6 +50,7 @@
             android:padding="16dp">
 
             <TextView
+                android:id="@+id/txtPlano"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Plano Mensal Unifor Gym"
@@ -59,27 +60,42 @@
 
             <LinearLayout style="@style/LinhaMedida">
                 <TextView style="@style/RotuloMedida" android:text="Aluno" />
-                <TextView style="@style/ValorMedida" android:text="Carla Luz" />
+                <TextView
+                    android:id="@+id/txtAluno"
+                    style="@style/ValorMedida"
+                    android:text="Carla Luz" />
             </LinearLayout>
 
             <LinearLayout style="@style/LinhaMedida">
                 <TextView style="@style/RotuloMedida" android:text="Matrícula" />
-                <TextView style="@style/ValorMedida" android:text="2024004" />
+                <TextView
+                    android:id="@+id/txtMatricula"
+                    style="@style/ValorMedida"
+                    android:text="2024004" />
             </LinearLayout>
 
             <LinearLayout style="@style/LinhaMedida">
                 <TextView style="@style/RotuloMedida" android:text="Início do contrato" />
-                <TextView style="@style/ValorMedida" android:text="05/03/2026" />
+                <TextView
+                    android:id="@+id/txtInicio"
+                    style="@style/ValorMedida"
+                    android:text="05/03/2026" />
             </LinearLayout>
 
             <LinearLayout style="@style/LinhaMedida">
                 <TextView style="@style/RotuloMedida" android:text="Vigência" />
-                <TextView style="@style/ValorMedida" android:text="12 meses" />
+                <TextView
+                    android:id="@+id/txtVigencia"
+                    style="@style/ValorMedida"
+                    android:text="12 meses" />
             </LinearLayout>
 
             <LinearLayout style="@style/LinhaMedida">
                 <TextView style="@style/RotuloMedida" android:text="Valor mensal" />
-                <TextView style="@style/ValorMedida" android:text="R$ 89,90" />
+                <TextView
+                    android:id="@+id/txtValor"
+                    style="@style/ValorMedida"
+                    android:text="R$ 89,90" />
             </LinearLayout>
 
             <LinearLayout
@@ -87,6 +103,7 @@
                 android:gravity="center_vertical">
                 <TextView style="@style/RotuloMedida" android:text="Status" />
                 <TextView
+                    android:id="@+id/txtStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_badge_ativo"
