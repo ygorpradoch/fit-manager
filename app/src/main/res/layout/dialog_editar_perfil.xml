@@ -48,7 +48,15 @@
             android:layout_marginTop="12dp"
             app:cardBackgroundColor="@color/fm_border"
             app:cardCornerRadius="24dp"
-            app:cardElevation="0dp" />
+            app:cardElevation="0dp">
+
+        <ImageView
+            android:id="@+id/imgFotoDialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Foto do aluno"
+            android:scaleType="centerCrop" />
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAlterarFoto"

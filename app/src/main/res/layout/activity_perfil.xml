@@ -25,7 +25,15 @@
             android:layout_height="48dp"
             app:cardBackgroundColor="@color/fm_avatar"
             app:cardCornerRadius="24dp"
-            app:cardElevation="0dp" />
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/imgAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Foto do aluno"
+                android:scaleType="centerCrop" />
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/txtNomeAluno"

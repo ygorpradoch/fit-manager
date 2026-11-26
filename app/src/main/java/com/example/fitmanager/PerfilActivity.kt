@@ -2,15 +2,23 @@ package com.example.fitmanager
 
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -19,7 +27,8 @@ import androidx.core.view.updatePadding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import android.util.Log
+import java.io.ByteArrayOutputStream
+import com.google.firebase.firestore.ListenerRegistration
 
 class PerfilActivity : AppCompatActivity() {
 
@@ -31,6 +40,19 @@ class PerfilActivity : AppCompatActivity() {
     private var nomeAtual = ""
     private var pesoAtual: Double? = null
     private var alturaAtual: Double? = null
+    private var fotoBase64: String? = null
+    private var imgFotoDialog: ImageView? = null
+
+    // Ouvintes do Firestore: ligados no onStart e desligados no onStop
+    private var ouvintePerfil: ListenerRegistration? = null
+
+    private var ouvinteObjetivos: ListenerRegistration? = null
+
+    // Abre a galeria (Photo Picker do Android, sem precisar de permissão)
+    private val escolherFoto =
+        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+            if (uri != null) salvarFoto(uri)
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +64,7 @@ class PerfilActivity : AppCompatActivity() {
             return
         }
         uid = usuario.uid
+        DadosPadrao.garantir(uid)
 
         enableEdgeToEdge()
         setContentView(R.layout.activity_perfil)
@@ -63,10 +86,23 @@ class PerfilActivity : AppCompatActivity() {
         observarObjetivos()
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (uid.isEmpty()) return
+        observarPerfil()
+        observarObjetivos()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        ouvintePerfil?.remove()
+        ouvinteObjetivos?.remove()
+    }
+
     // Lê o documento usuarios/{uid} e atualiza a tela sempre que ele mudar
     private fun observarPerfil() {
-        db.collection("usuarios").document(uid)
-            .addSnapshotListener(this) { doc, erro ->
+        ouvintePerfil = db.collection("usuarios").document(uid)
+            .addSnapshotListener { doc, erro ->
                 if (erro != null || doc == null || !doc.exists()) return@addSnapshotListener
 
                 nomeAtual = doc.getString("nome").orEmpty()
@@ -75,6 +111,7 @@ class PerfilActivity : AppCompatActivity() {
                 val gc = doc.getDouble("gc")
                 pesoAtual = peso
                 alturaAtual = altura
+                fotoBase64 = doc.getString("fotoBase64")
 
                 val imc = if (peso != null && altura != null && altura > 0) {
                     peso / (altura * altura)
@@ -85,13 +122,17 @@ class PerfilActivity : AppCompatActivity() {
                 texto(R.id.txtAltura, altura?.let { "${formatarNumero(it)} m" } ?: "-")
                 texto(R.id.txtImc, imc?.let { String.format(LOCALE_BR, "%.1f", it) } ?: "-")
                 texto(R.id.txtGc, gc?.let { "${formatarNumero(it)}%" } ?: "-")
+
+                mostrarFoto(findViewById(R.id.imgAvatar), fotoBase64)
+                mostrarFoto(imgFotoDialog, fotoBase64)
             }
+
     }
 
     // Lê a subcoleção usuarios/{uid}/objetivos e monta um item para cada um
     private fun observarObjetivos() {
-        db.collection("usuarios").document(uid).collection("objetivos")
-            .addSnapshotListener(this) { resultado, erro ->
+        ouvinteObjetivos = db.collection("usuarios").document(uid).collection("objetivos")
+            .addSnapshotListener { resultado, erro ->
                 if (erro != null || resultado == null) return@addSnapshotListener
 
                 val container = findViewById<LinearLayout>(R.id.listaObjetivos)
@@ -167,8 +208,9 @@ class PerfilActivity : AppCompatActivity() {
 
             db.collection("usuarios").document(uid).collection("objetivos").add(objetivo)
                 .addOnSuccessListener { dialog.dismiss() }
-                .addOnFailureListener {
-                    Toast.makeText(this, "Não foi possível salvar o objetivo", Toast.LENGTH_SHORT).show()
+                .addOnFailureListener { e ->
+                    Log.e("FIREBASE", "Erro ao salvar o objetivo", e)
+                    Toast.makeText(this, "Erro: ${e.message}", Toast.LENGTH_LONG).show()
                 }
         }
         dialog.show()
@@ -181,7 +223,7 @@ class PerfilActivity : AppCompatActivity() {
         return Pair(numero, resultado.groupValues[2].trim())
     }
 
-    // Popup "Editar Perfil": atualiza nome, peso e altura em usuarios/{uid}
+    // Popup "Editar Perfil": atualiza nome, peso e altura em usuarios/{uid} e permite trocar a foto
     private fun mostrarPopupEditarPerfil() {
         val dialog = criarDialog(R.layout.dialog_editar_perfil)
         val edtNome = dialog.findViewById<EditText>(R.id.edtNome)
@@ -192,9 +234,13 @@ class PerfilActivity : AppCompatActivity() {
         edtPeso.setText(pesoAtual?.let { formatarNumero(it) } ?: "")
         edtAltura.setText(alturaAtual?.let { formatarNumero(it) } ?: "")
 
+        imgFotoDialog = dialog.findViewById(R.id.imgFotoDialog)
+        mostrarFoto(imgFotoDialog, fotoBase64)
+        dialog.setOnDismissListener { imgFotoDialog = null }
+
         dialog.findViewById<View>(R.id.btnFechar).setOnClickListener { dialog.dismiss() }
         dialog.findViewById<View>(R.id.btnAlterarFoto).setOnClickListener {
-            Toast.makeText(this, "Alterar foto: disponível em breve", Toast.LENGTH_SHORT).show()
+            escolherFoto.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
 
         dialog.findViewById<View>(R.id.btnSalvar).setOnClickListener {
@@ -218,11 +264,69 @@ class PerfilActivity : AppCompatActivity() {
             db.collection("usuarios").document(uid)
                 .update(mapOf("nome" to nome, "peso" to peso, "altura" to altura))
                 .addOnSuccessListener { dialog.dismiss() }
-                .addOnFailureListener {
-                    Toast.makeText(this, "Não foi possível salvar o perfil", Toast.LENGTH_SHORT).show()
+                .addOnFailureListener { e ->
+                    Log.e("FIREBASE", "Erro ao salvar o perfil", e)
+                    Toast.makeText(this, "Erro: ${e.message}", Toast.LENGTH_LONG).show()
                 }
         }
         dialog.show()
+    }
+
+    // Reduz a foto escolhida, converte em texto (Base64) e grava em usuarios/{uid}
+    private fun salvarFoto(uri: Uri) {
+        val bitmap = carregarBitmapQuadrado(uri, 256)
+        if (bitmap == null) {
+            Toast.makeText(this, "Não foi possível ler a imagem", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val saida = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, saida)
+        val base64 = Base64.encodeToString(saida.toByteArray(), Base64.NO_WRAP)
+
+        db.collection("usuarios").document(uid)
+            .update("fotoBase64", base64)
+            .addOnFailureListener { e ->
+                Log.e("FIREBASE", "Erro ao salvar a foto", e)
+                Toast.makeText(this, "Erro: ${e.message}", Toast.LENGTH_LONG).show()
+            }
+    }
+
+    // Abre a imagem já reduzida (evita estourar a memória) e recorta o centro em quadrado
+    private fun carregarBitmapQuadrado(uri: Uri, lado: Int): Bitmap? {
+        return try {
+            val limites = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+            contentResolver.openInputStream(uri)?.use { BitmapFactory.decodeStream(it, null, limites) }
+
+            var amostra = 1
+            while (limites.outWidth / (amostra * 2) >= lado && limites.outHeight / (amostra * 2) >= lado) {
+                amostra *= 2
+            }
+
+            val opcoes = BitmapFactory.Options().apply { inSampleSize = amostra }
+            val original = contentResolver.openInputStream(uri)?.use {
+                BitmapFactory.decodeStream(it, null, opcoes)
+            } ?: return null
+
+            val menor = minOf(original.width, original.height)
+            val recorte = Bitmap.createBitmap(
+                original, (original.width - menor) / 2, (original.height - menor) / 2, menor, menor
+            )
+            Bitmap.createScaledBitmap(recorte, lado, lado, true)
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    // Converte o texto Base64 de volta em imagem e mostra na tela
+    private fun mostrarFoto(imagem: ImageView?, base64: String?) {
+        if (imagem == null) return
+        if (base64.isNullOrEmpty()) {
+            imagem.setImageDrawable(null)
+            return
+        }
+        val bytes = Base64.decode(base64, Base64.NO_WRAP)
+        imagem.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.size))
     }
 
     private fun texto(id: Int, valor: String) {
