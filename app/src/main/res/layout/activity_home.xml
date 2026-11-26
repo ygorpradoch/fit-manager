@@ -29,7 +29,7 @@
                 android:id="@+id/txtSaudacao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bem-vindo, Carla"
+                android:text="Bem-vindo"
                 android:textColor="@android:color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -85,44 +85,32 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
-                            android:text="Treino do Dia: PERNA"
+                            android:text="Treino do Dia"
                             android:textColor="@color/fm_text"
                             android:textSize="17sp"
                             android:textStyle="bold" />
 
-                        <LinearLayout style="@style/LinhaExercicio">
-                            <TextView style="@style/NomeExercicio" android:text="Agachamento" />
-                            <TextView style="@style/CargaExercicio" android:text="40kg · 3x" />
-                        </LinearLayout>
-                        <View style="@style/DivisorLinha" />
+                        <TextView
+                            android:id="@+id/txtSemTreino"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Nenhum treino programado para hoje."
+                            android:textColor="@color/fm_muted"
+                            android:textSize="14sp"
+                            android:visibility="gone" />
 
-                        <LinearLayout style="@style/LinhaExercicio">
-                            <TextView style="@style/NomeExercicio" android:text="Leg Press" />
-                            <TextView style="@style/CargaExercicio" android:text="80kg · 3x" />
-                        </LinearLayout>
-                        <View style="@style/DivisorLinha" />
-
-                        <LinearLayout style="@style/LinhaExercicio">
-                            <TextView style="@style/NomeExercicio" android:text="Cadeira Extensora" />
-                            <TextView style="@style/CargaExercicio" android:text="45kg · 3x" />
-                        </LinearLayout>
-                        <View style="@style/DivisorLinha" />
-
-                        <LinearLayout style="@style/LinhaExercicio">
-                            <TextView style="@style/NomeExercicio" android:text="Stiff" />
-                            <TextView style="@style/CargaExercicio" android:text="30kg · 3x" />
-                        </LinearLayout>
-                        <View style="@style/DivisorLinha" />
-
-                        <LinearLayout style="@style/LinhaExercicio">
-                            <TextView style="@style/NomeExercicio" android:text="Mesa Flexora" />
-                            <TextView style="@style/CargaExercicio" android:text="50kg · 3x" />
-                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/containerTreinoDia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <!-- Próximos Treinos -->
                 <TextView
+                    android:id="@+id/txtTituloProximos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -132,12 +120,14 @@
                     android:textStyle="bold" />
 
                 <LinearLayout
+                    android:id="@+id/linhaProximos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardProximo1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="6dp"
@@ -154,6 +144,7 @@
                             android:padding="16dp">
 
                             <TextView
+                                android:id="@+id/txtProximo1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Peito"
@@ -162,7 +153,7 @@
                                 android:textStyle="bold" />
 
                             <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btnVerPeito"
+                                android:id="@+id/btnVerProximo1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
@@ -173,6 +164,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardProximo2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
@@ -189,6 +181,7 @@
                             android:padding="16dp">
 
                             <TextView
+                                android:id="@+id/txtProximo2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Costas"
@@ -197,7 +190,7 @@
                                 android:textStyle="bold" />
 
                             <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btnVerCostas"
+                                android:id="@+id/btnVerProximo2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
