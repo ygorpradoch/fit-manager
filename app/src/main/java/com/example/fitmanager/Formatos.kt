@@ -26,10 +26,21 @@ fun formatarTempoDecorrido(data: Date?): String {
             val horas = minutos / 60
             if (horas == 1L) "Há 1 hora" else "Há $horas horas"
         }
+
         minutos < 30 * 24 * 60 -> {
             val dias = minutos / (24 * 60)
             if (dias == 1L) "Há 1 dia" else "Há $dias dias"
         }
+
         else -> SimpleDateFormat("dd/MM/yyyy", LOCALE_BR).format(data)
     }
 }
+
+
+    // "08:30" vira 510 (minutos desde a meia-noite)
+    fun horaParaMinutos(hora: String): Int {
+        val partes = hora.split(":")
+        val h = partes.getOrNull(0)?.toIntOrNull() ?: 0
+        val m = partes.getOrNull(1)?.toIntOrNull() ?: 0
+        return h * 60 + m
+    }

@@ -1,26 +1,33 @@
 package com.example.fitmanager
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAdjusters
-import java.util.Locale
 
-class `AdminAulaDetalheActivity` : AppCompatActivity() {
+class AdminAulaDetalheActivity : AppCompatActivity() {
 
     companion object {
-        const val EXTRA_AULA = "aula"
+        const val EXTRA_AULA_ID = "aulaId"
     }
 
+    private val db = FirebaseFirestore.getInstance()
+    private var ouvinte: ListenerRegistration? = null
+    private var aulaId = ""
 
+    // Matrículas de exemplo dos instrutores (virão de um cadastro de instrutores depois)
     private val matriculas = mapOf(
         "Ronnison" to "205304",
         "Marcelo" to "205311",
@@ -33,23 +40,50 @@ class `AdminAulaDetalheActivity` : AppCompatActivity() {
         setContentView(R.layout.activity_admin_aula_detalhe)
         ajustarBarras()
 
-        val aula = lerAula()
-        if (aula == null) {
+        aulaId = intent.getStringExtra(EXTRA_AULA_ID).orEmpty()
+        if (aulaId.isEmpty()) {
             finish()
             return
         }
-        preencher(aula)
 
         findViewById<View>(R.id.btnVoltar).setOnClickListener { finish() }
-
         BarraNavegacaoAdmin.configurar(this, ItemNavAdmin.AULAS)
     }
 
-    @Suppress("DEPRECATION")
-    private fun lerAula(): AulaAdmin? = intent.getSerializableExtra(EXTRA_AULA) as? AulaAdmin
+    override fun onStart() {
+        super.onStart()
+        if (aulaId.isEmpty()) return
+        observarAula()
+    }
 
+    override fun onStop() {
+        super.onStop()
+        ouvinte?.remove()
+    }
 
+    // Lê o documento aulas/{id} e atualiza a tela sempre que ele mudar
+    private fun observarAula() {
+        ouvinte = db.collection("aulas").document(aulaId)
+            .addSnapshotListener { doc, erro ->
+                if (erro != null) {
+                    Log.e("FIREBASE", "Erro ao ler a aula", erro)
+                    Toast.makeText(this, "Erro: ${erro.message}", Toast.LENGTH_LONG).show()
+                    return@addSnapshotListener
+                }
+                if (doc == null) return@addSnapshotListener
+                if (!doc.exists()) {
+                    // A aula foi excluída enquanto a tela estava aberta
+                    finish()
+                    return@addSnapshotListener
+                }
+                preencher(AulaAdmin.de(doc))
+            }
+    }
+
+    // Distribui os dados da aula nos campos da tela
     private fun preencher(aula: AulaAdmin) {
+        val duracao = horaParaMinutos(aula.fim) - horaParaMinutos(aula.inicio)
+
         texto(R.id.txtTituloDetalhe, aula.nome)
         texto(R.id.txtInicialInstrutor, aula.instrutor.take(2).uppercase())
         texto(R.id.txtNomeInstrutor, aula.instrutor)
@@ -57,7 +91,7 @@ class `AdminAulaDetalheActivity` : AppCompatActivity() {
         texto(R.id.txtDia, aula.dia)
         texto(R.id.txtHorario, "${aula.inicio} - ${aula.fim}")
         texto(R.id.txtAlunos, "${aula.matriculados}/${aula.vagas}")
-        texto(R.id.txtDuracao, "${minutos(aula.fim) - minutos(aula.inicio)} min")
+        texto(R.id.txtDuracao, "$duracao min")
         texto(R.id.txtEquipamentos, aula.equipamento)
 
         val datas = proximasDatas(aula.dia)
@@ -73,15 +107,7 @@ class `AdminAulaDetalheActivity` : AppCompatActivity() {
         findViewById<TextView>(id).text = valor
     }
 
-
-    private fun minutos(hora: String): Int {
-        val partes = hora.split(":")
-        val h = partes.getOrNull(0)?.toIntOrNull() ?: 0
-        val m = partes.getOrNull(1)?.toIntOrNull() ?: 0
-        return h * 60 + m
-    }
-
-
+    // Calcula as próximas três datas em que a aula acontece
     private fun proximasDatas(dia: String): List<String> {
         val diaSemana = when (dia) {
             "Segunda" -> DayOfWeek.MONDAY
@@ -92,7 +118,7 @@ class `AdminAulaDetalheActivity` : AppCompatActivity() {
             "Sábado" -> DayOfWeek.SATURDAY
             else -> DayOfWeek.SUNDAY
         }
-        val formato = DateTimeFormatter.ofPattern("dd 'de' MMM", Locale.forLanguageTag("pt-BR"))
+        val formato = DateTimeFormatter.ofPattern("dd 'de' MMM", LOCALE_BR)
         val primeira = LocalDate.now().with(TemporalAdjusters.nextOrSame(diaSemana))
         return (0..2).map { primeira.plusWeeks(it.toLong()).format(formato) }
     }
